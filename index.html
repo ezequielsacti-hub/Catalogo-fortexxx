@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fortex SRL | Catálogo</title>
+<style>
+:root{--yellow:#ffb21a;--orange:#ff6a00;--ink:#171717;--muted:#6b7280;--bg:#f4f5f7;--line:#e5e7eb}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:#222}
+header{background:#171717;color:#fff;border-bottom:5px solid var(--yellow);position:sticky;top:0;z-index:5;box-shadow:0 3px 14px #0002}
+.top{max-width:1200px;margin:auto;padding:12px 18px;display:flex;align-items:center;gap:18px}
+.brand{display:flex;align-items:center;gap:10px;min-width:185px}.brand img{width:54px;height:54px;object-fit:cover;border-radius:8px}.brand strong{font-size:24px;letter-spacing:1px}.brand small{display:block;color:var(--yellow);letter-spacing:3px;font-size:11px}
+.search{display:flex;flex:1;max-width:620px}.search input{width:100%;padding:13px;border:0;border-radius:8px 0 0 8px;font-size:15px;outline:none}.search button{border:0;background:var(--yellow);padding:0 18px;border-radius:0 8px 8px 0;font-weight:bold;cursor:pointer}
+.cartbtn{margin-left:auto;background:#292929;border:1px solid #555;color:#fff;padding:12px 15px;border-radius:8px;cursor:pointer;white-space:nowrap}.cartbtn b{background:var(--yellow);color:#171717;border-radius:20px;padding:3px 7px;margin-left:5px}
+main{max-width:1200px;margin:22px auto;padding:0 18px}.hero{background:linear-gradient(115deg,#191919,#343434);color:white;border-radius:14px;padding:25px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:22px;overflow:hidden}.hero h1{font-size:clamp(25px,4vw,40px);margin:0 0 9px}.hero p{margin:0;color:#ddd;line-height:1.5}.hero em{color:var(--yellow);font-style:normal}.hero-tag{font-weight:800;font-size:clamp(20px,3vw,32px);color:var(--yellow);text-align:right}
+.toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:18px 0}.toolbar h2{margin:0 auto 0 0;font-size:22px}.toolbar select{padding:10px;border:1px solid var(--line);border-radius:8px;background:white}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.product{background:#fff;border:1px solid #e9e9e9;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s}.product:hover{transform:translateY(-3px);box-shadow:0 8px 22px #0000000d}.photo{height:220px;background:#f7f7f7;display:flex;align-items:center;justify-content:center;padding:8px}.photo img{width:100%;height:100%;object-fit:contain;border-radius:5px}.info{padding:14px;display:flex;flex-direction:column;flex:1}.category{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#777}.info h3{font-size:16px;line-height:1.3;margin:7px 0}.desc{font-size:13px;color:#666;line-height:1.4;min-height:36px}.price{font-size:23px;font-weight:800;margin:12px 0 4px;color:#171717}.installments{font-size:12px;color:#16834b;margin-bottom:12px}.add{margin-top:auto;border:0;background:var(--yellow);color:#171717;font-weight:800;padding:12px;border-radius:8px;cursor:pointer}.add:hover{background:#ffc54d}
+footer{text-align:center;padding:30px 15px;color:#777;font-size:13px}
+.overlay{position:fixed;inset:0;background:#0008;z-index:10;opacity:0;pointer-events:none;transition:opacity .2s}.overlay.open{opacity:1;pointer-events:auto}.drawer{position:absolute;right:0;top:0;height:100%;width:min(460px,100%);background:white;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .25s}.overlay.open .drawer{transform:translateX(0)}.drawerhead{padding:18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.drawerhead h2{margin:0}.close{border:0;background:#eee;border-radius:50%;width:35px;height:35px;font-size:22px;cursor:pointer}.cartitems{padding:12px 18px;overflow:auto;flex:1}.empty{text-align:center;color:#777;padding:55px 15px}.cartitem{display:grid;grid-template-columns:72px 1fr auto;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);align-items:center}.cartitem img{width:72px;height:72px;object-fit:contain;background:#f6f6f6;border-radius:8px}.cartitem h4{margin:0 0 6px;font-size:14px}.cartitem .unit{font-weight:bold}.qty{display:flex;align-items:center;gap:8px;margin-top:8px}.qty button{border:1px solid #ddd;background:#fff;border-radius:5px;width:26px;height:26px;cursor:pointer}.remove{border:0;background:none;color:#b91c1c;font-size:12px;cursor:pointer;margin-top:6px;padding:0}.cartfoot{padding:18px;border-top:1px solid var(--line);box-shadow:0 -4px 12px #00000008}.subtotal{display:flex;justify-content:space-between;font-size:20px;font-weight:800;margin-bottom:6px}.shipping{font-size:12px;color:#777;margin-bottom:15px}.checkout{width:100%;padding:14px;background:#171717;color:white;border:0;border-radius:8px;font-weight:bold;font-size:15px;cursor:pointer}.checkout:disabled{opacity:.45;cursor:not-allowed}.note{font-size:11px;color:#777;margin-top:10px;line-height:1.4}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);background:#171717;color:white;padding:12px 18px;border-radius:8px;opacity:0;transition:.2s;z-index:20;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:900px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.photo{height:190px}.brand{min-width:auto}.brand strong{font-size:20px}}
+@media(max-width:650px){.top{flex-wrap:wrap;gap:10px}.brand{flex:1}.brand img{width:43px;height:43px}.brand strong{font-size:19px}.search{order:3;flex-basis:100%;max-width:none}.cartbtn{padding:10px}.hero{padding:20px;align-items:flex-start}.hero-tag{display:none}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.photo{height:160px}.info{padding:11px}.info h3{font-size:14px}.price{font-size:19px}.desc{font-size:12px}.toolbar h2{width:100%}}
+@media(max-width:380px){.grid{grid-template-columns:1fr}.photo{height:230px}}
+</style></head><body>
+<header><div class="top">
+ <div class="brand"><img id="logo" alt="Fortex logo"><div><strong>FORTEX</strong><small>FERRETERÍA SRL</small></div></div>
+ <div class="search"><input id="search" placeholder="Buscar herramientas, materiales..." aria-label="Buscar productos"><button onclick="renderProducts()">Buscar</button></div>
+ <button class="cartbtn" onclick="toggleCart(true)">🛒 Carrito <b id="cartCount">0</b></button>
+</div></header>
+<main>
+<section class="hero"><div><h1>Todo para tu obra, en un solo lugar.</h1><p>Explorá el catálogo de <em>Fortex Ferretería</em> y armá tu carrito.<br>Herramientas, materiales y productos para el hogar.</p></div><div class="hero-tag">CALIDAD<br>QUE CONSTRUYE</div></section>
+<div class="toolbar"><h2>Catálogo de productos</h2><select id="category" onchange="renderProducts()"><option value="">Todas las categorías</option><option>Herramientas</option><option>Materiales</option><option>Automotor</option><option>Construcción</option><option>Medición</option></select><select id="sort" onchange="renderProducts()"><option value="default">Orden recomendado</option><option value="low">Menor precio</option><option value="high">Mayor precio</option><option value="az">Nombre A-Z</option></select></div>
+<div id="grid" class="grid"></div>
+</main>
+<footer>FORTEX SRL · Catálogo demostrativo. Los precios son de ejemplo y deben confirmarse con la ferretería.</footer>
+<div class="overlay" id="overlay" onclick="overlayClick(event)"><aside class="drawer" role="dialog" aria-modal="true" aria-label="Carrito de compras">
+ <div class="drawerhead"><h2>🛒 Tu carrito</h2><button class="close" onclick="toggleCart(false)" aria-label="Cerrar">×</button></div>
+ <div class="cartitems" id="cartItems"></div>
+ <div class="cartfoot"><div class="subtotal"><span>Subtotal</span><span id="subtotal">$0</span></div><div class="shipping">Envío y medios de pago se coordinan al confirmar el pedido.</div><button class="checkout" id="checkout" onclick="checkout()">Continuar compra</button><div class="note">Esta demo no procesa pagos reales. Revisá productos y cantidades antes de enviar el pedido.</div></div>
+</aside></div><div class="toast" id="toast"></div>
+<script>
+const PRODUCTS = [{"id": 1, "name": "Bolsón de arena Fortex", "category": "Materiales", "price": 18500, "desc": "Arena para construcción y obra.", "img": "arena.jpg"}, {"id": 2, "name": "Corta pernos reforzado", "category": "Herramientas", "price": 24900, "desc": "Herramienta manual de corte.", "img": "corta_pernos.jpg"}, {"id": 3, "name": "Pinza universal", "category": "Herramientas", "price": 8900, "desc": "Pinza con mango antideslizante.", "img": "pinza.jpg"}, {"id": 4, "name": "Kit para cambio de ruedas", "category": "Automotor", "price": 89500, "desc": "Kit con crique, llave y caballetes.", "img": "kit_ruedas.jpg"}, {"id": 5, "name": "Juego de destornilladores x18", "category": "Herramientas", "price": 32900, "desc": "Set de destornilladores en soporte.", "img": "destornilladores.jpg"}, {"id": 6, "name": "Mezcladora de cemento", "category": "Construcción", "price": 425000, "desc": "Mezcladora para trabajos de obra.", "img": "mezcladora.jpg"}, {"id": 7, "name": "Llana de albañil", "category": "Construcción", "price": 6500, "desc": "Llana manual para albañilería.", "img": "llana.jpg"}, {"id": 8, "name": "Llave inglesa ajustable", "category": "Herramientas", "price": 11900, "desc": "Llave ajustable para distintas medidas.", "img": "llave_inglesa.jpg"}, {"id": 9, "name": "Cinta métrica 3 m", "category": "Medición", "price": 4900, "desc": "Flexómetro compacto de 3 metros.", "img": "cinta_metrica.jpg"}];
+const IMAGES = {"arena.jpg": "assets/93439.jpg", "corta_pernos.jpg": "assets/93438.jpg", "pinza.jpg": "assets/93435.jpg", "kit_ruedas.jpg": "assets/93436.jpg", "destornilladores.jpg": "assets/93434.jpg", "mezcladora.jpg": "assets/93437.jpg", "llana.jpg": "assets/93433.jpg", "llave_inglesa.jpg": "assets/93414.jpg", "cinta_metrica.jpg": "assets/93415.jpg", "logo.jpg": "assets/93428.jpg"};
+document.getElementById('logo').src=IMAGES['logo.jpg'];
+let cart = {};
+const money = n => new Intl.NumberFormat('es-AR',{style:'currency',currency:'ARS',maximumFractionDigits:0}).format(n);
+function renderProducts(){
+ const q=document.getElementById('search').value.trim().toLowerCase(), cat=document.getElementById('category').value, sort=document.getElementById('sort').value;
+ let items=PRODUCTS.filter(p=>(!q||(p.name+' '+p.category+' '+p.desc).toLowerCase().includes(q))&&(!cat||p.category===cat));
+ if(sort==='low')items.sort((a,b)=>a.price-b.price);if(sort==='high')items.sort((a,b)=>b.price-a.price);if(sort==='az')items.sort((a,b)=>a.name.localeCompare(b.name,'es'));
+ document.getElementById('grid').innerHTML=items.length?items.map(p=>`<article class="product"><div class="photo"><img src="${IMAGES[p.img]}" alt="${p.name}"></div><div class="info"><span class="category">${p.category}</span><h3>${p.name}</h3><div class="desc">${p.desc}</div><div class="price">${money(p.price)}</div><div class="installments">Consultá disponibilidad y entrega</div><button class="add" onclick="addToCart(${p.id})">Agregar al carrito</button></div></article>`).join(''):'<p>No encontramos productos con esa búsqueda.</p>';
+}
+function addToCart(id){cart[id]=(cart[id]||0)+1;renderCart();showToast('Producto agregado al carrito');}
+function changeQty(id,delta){cart[id]=(cart[id]||0)+delta;if(cart[id]<=0)delete cart[id];renderCart();}
+function removeItem(id){delete cart[id];renderCart();}
+function renderCart(){
+ const entries=Object.entries(cart), count=entries.reduce((s,[id,q])=>s+q,0), total=entries.reduce((s,[id,q])=>s+PRODUCTS.find(p=>p.id===+id).price*q,0);
+ document.getElementById('cartCount').textContent=count;document.getElementById('subtotal').textContent=money(total);document.getElementById('checkout').disabled=count===0;
+ document.getElementById('cartItems').innerHTML=entries.length?entries.map(([id,q])=>{const p=PRODUCTS.find(x=>x.id===+id);return `<div class="cartitem"><img src="${IMAGES[p.img]}" alt=""><div><h4>${p.name}</h4><div class="unit">${money(p.price)}</div><div class="qty"><button onclick="changeQty(${p.id},-1)">−</button><span>${q}</span><button onclick="changeQty(${p.id},1)">+</button></div><button class="remove" onclick="removeItem(${p.id})">Eliminar</button></div><strong>${money(p.price*q)}</strong></div>`}).join(''):'<div class="empty"><div style="font-size:42px">🛒</div><h3>Tu carrito está vacío</h3><p>Agregá productos del catálogo para empezar tu compra.</p></div>';
+}
+function toggleCart(open){document.getElementById('overlay').classList.toggle('open',open);if(open)renderCart();}
+function overlayClick(e){if(e.target.id==='overlay')toggleCart(false)}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
+function checkout(){
+ const entries=Object.entries(cart); if(!entries.length) return;
+ const lines=entries.map(([id,q])=>{const p=PRODUCTS.find(x=>x.id===+id);return `${q} x ${p.name} — ${money(p.price*q)}`;});
+ const total=entries.reduce((s,[id,q])=>s+PRODUCTS.find(p=>p.id===+id).price*q,0);
+ const summary=`PEDIDO FORTEX SRL\n\n${lines.join('\n')}\n\nSubtotal: ${money(total)}\n\nPrecios de ejemplo: confirmar disponibilidad y precio final.`;
+ const w=window.open('', '_blank');
+ if(w){
+   const pre=w.document.createElement('pre');
+   pre.textContent=summary;
+   pre.style.cssText='font:16px Arial;white-space:pre-wrap;padding:24px';
+   w.document.title='Pedido Fortex';
+   w.document.body.appendChild(pre);
+   const btn=w.document.createElement('button');
+   btn.textContent='Copiar pedido';
+   btn.style.cssText='margin:0 24px;padding:12px 18px';
+   btn.onclick=()=>w.navigator.clipboard.writeText(summary);
+   w.document.body.appendChild(btn);
+ } else { alert(summary); }
+}
+document.getElementById('search').addEventListener('keydown',e=>{if(e.key==='Enter')renderProducts()});
+renderProducts();renderCart();
+</script></body></html>
